@@ -29,21 +29,21 @@ print(SECRET_KEY)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # shows error message when True. in real service, this must be False.
 
-ALLOWED_HOSTS = [u'127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'cranberry_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE' : 'django.db.backends.mysql',
+        'NAME' : 'check_db',
+        'USER' : 'root', 
+        'PASSWORD' : '123456789',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
     }
 }
 
