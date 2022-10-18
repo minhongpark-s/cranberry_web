@@ -1,0 +1,27 @@
+{% load static %}
+ 
+<!DOCTYPE html>
+<html lang="ko">
+ 
+<head>
+    <meta charset="UTF-8">
+    <title>Cranberry</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/roslibjs/build/roslib.js' %}"></script>
+    <style>
+        #myCanvas{
+            border: 1px solid black;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="header">status</div>
+    <br>
+    <canvas id="myCanvas" width="400" height="300" >
+    </canvas>
+</body>
+
+
+<script src="{% static 'js/scriptForTopic.js' %}"></script>
