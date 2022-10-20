@@ -42,7 +42,7 @@ var position = [];
 position[0]=1;
 i=1;
 dataSender = document.getElementById('sendData');
-createForm("updateDatabase",'GET','x','10','y','10');
+createForm("updateDatabase/",'GET','x','10','y','10');
 
   listener.subscribe(function(message) {
     console.log('Received message on ' + listener.name + ': ' + message.data);

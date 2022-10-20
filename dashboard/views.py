@@ -40,6 +40,12 @@ def databaseTest(request):
         'dashboard/databaseTest.html',
     )
 
+def robotDataCleanUp(request):
+    q = robotData.objects.all()
+    q.delete()
+    return redirect('databaseTest')
+
+@csrf_exempt
 def updateDatabase(request):
     if request.method == 'GET':
         rd = robotData()
@@ -52,6 +58,16 @@ def updateDatabase(request):
             request,
             'dashboard/databaseTestSecond.html',
         )
+    if request.method == 'POST':
+        receive_message_x = request.POST.get('x')
+        receive_message_y = request.POST.get('y')
+        rd = robotData()
+        rd.robotPositionY = int(receive_message_x)
+        rd.robotPositionX = int(receive_message_y)
+        rd.checked_at = datetime.now()
+        rd.save()
+        send_message = {'send_data' : "I received "+ receive_message_x + " and " + receive_message_y}
+        return JsonResponse(send_message)
 
 @csrf_exempt
 def ajax_method(request):

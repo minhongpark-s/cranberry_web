@@ -51,16 +51,16 @@ listener.subscribe(function(message) {
     /*if not using ajax, then use below code.
     createForm("updateDatabase",'GET','x',data,'y',data);
     */
-    setTimeout(request_ajax(return_data),100);
+    setTimeout(request_ajax(return_data, return_data),100);
   });
 
 
-function request_ajax(return_data){
+function request_ajax(return_data_x, return_data_y){
     $.ajax({
-        url: 'ajax_method/',
+        url: '/dashboard/updateDatabase/',
         type: "POST",
         dataType: "JSON",
-        data: {'x': return_data,'y' : return_data},
+        data: {'x': return_data_x,'y' : return_data_y},
         success: function(data){
             console.log(data);
         },beforeSend:function(){
