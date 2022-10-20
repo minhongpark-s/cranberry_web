@@ -9,3 +9,8 @@ class Menu(models.Model):
     
     class Meta:
     	db_table = 'menu'
+
+class robotData(models.Model):
+    checked_at = models.DateTimeField(auto_now_add=True)
+    robotPositionX = models.IntegerField()
+    robotPositionY = models.IntegerField()
