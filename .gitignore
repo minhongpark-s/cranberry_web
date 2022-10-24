@@ -1,2 +1,18 @@
 settings.py
 secrets.json
+migrations
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/

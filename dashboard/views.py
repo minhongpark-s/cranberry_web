@@ -5,9 +5,33 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 from .models import robotData
+# for timing the robotData database.
 from datetime import datetime
-from time import sleep
+
+# for ajax request.
 from django.views.decorators.csrf import csrf_exempt
+
+# rest Framework tutorial.
+from rest_framework import viewsets
+from rest_framework import permissions
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+#from cranberry_web.dashboard.serializers import UserSerializer, GroupSerializer, RobotDataSerializer
+from .serializers import RobotDataSerializer
+
+class RobotDataViewSet(viewsets.ModelViewSet):
+    queryset = robotData.objects.all()
+    serializer_class = RobotDataSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+@api_view(['GET'])
+def get_api(request):
+    posts = robotData.objects.all()
+    serailized_posts= RobotDataSerializer(posts, many=True)
+    return Response(serailized_posts.data)
 
 # Create your views here.
 def dashboard(request):
