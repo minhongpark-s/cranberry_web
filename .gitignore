@@ -1,6 +1,7 @@
 settings.py
 secrets.json
 migrations
+/migrations
 
 # Environments
 .env
