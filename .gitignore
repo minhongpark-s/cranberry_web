@@ -11,6 +11,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+web.env/
+.web.env
+/web-env
 
 ### Django ###
 *.log
